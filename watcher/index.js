@@ -38,4 +38,4 @@ async function checkRepos() {
 }
 checkRepos();
 
-setInterval(checkRepos, 15 * 1000);
+setInterval(checkRepos, 15 * 60 * 1000);
