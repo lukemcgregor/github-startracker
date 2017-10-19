@@ -1,0 +1,55 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    },
+      "resources": [
+        {
+          "name": "startracker",
+          "type": "Microsoft.ContainerInstance/containerGroups",
+          "apiVersion": "2017-08-01-preview",
+          "location": "[resourceGroup().location]",
+          "properties": {
+            "containers": [
+              {
+                "name": "watcher",
+                "properties": {
+                  "image": "lukemcgregor/github-startracker-watcher",
+                  "resources": {
+                    "requests": {
+                      "cpu": 1,
+                      "memoryInGb": 0.5
+                      }
+                  }
+                }
+              },
+              {
+                "name": "api",
+                "properties": {
+                  "image": "lukemcgregor/github-startracker-api",
+                  "resources": {
+                    "requests": {
+                      "cpu": 1,
+                      "memoryInGb": 0.5
+                      }
+                  }
+                }
+              },
+              {
+                "name": "mongo",
+                "properties": {
+                  "image": "mongo",
+                  "resources": {
+                    "requests": {
+                      "cpu": 1,
+                      "memoryInGb": 0.5
+                    }
+                  }
+                }
+              }
+            ],
+            "osType": "Linux"
+          }
+        }
+      ]
+    }
