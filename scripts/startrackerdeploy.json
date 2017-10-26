@@ -18,9 +18,9 @@
       "properties": {
         "containers": [
           {
-            "name": "mongo",
+            "name": "postgres",
             "properties": {
-              "image": "mongo",
+              "image": "postgres",
               "resources": {
                 "requests": {
                   "cpu": 1,
@@ -29,8 +29,8 @@
               },
               "volumeMounts": [
               {
-                "name": "mongo-data-db",
-                "mountPath": "/data/db"
+                "name": "data-db",
+                "mountPath": "/var/lib/postgresql/data"
               }]
             }
           },
@@ -76,7 +76,7 @@
         },
         "volumes": [
         {
-          "name": "mongo-data-db",
+          "name": "data-db",
           "azureFile": {
             "shareName": "mongo-data-db",
             "storageAccountName": "[parameters('storageaccountname')]",
