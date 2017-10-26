@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageaccountname":{
+            "value": "test5345"
+        },
+        "storageaccountkey": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/639603ed-1c1c-4964-84a7-d7d9d050404c/resourceGroups/blog/providers/Microsoft.KeyVault/vaults/aci-keyvault2"
+                },
+                "secretName": "azurefilesstoragekey"
+            }
+        }
+    }
+}
