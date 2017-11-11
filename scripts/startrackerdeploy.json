@@ -35,21 +35,9 @@
             }
           },
           {
-            "name": "watcher",
-            "properties": {
-              "image": "lukemcgregor/github-startracker-watcher",
-              "resources": {
-                "requests": {
-                  "cpu": 1,
-                  "memoryInGb": 0.5
-                }
-              }
-            }
-          },
-          {
             "name": "api",
             "properties": {
-              "image": "lukemcgregor/github-startracker-api",
+              "image": "lukemcgregor/github-startracker-api:postgres",
               "resources": {
                 "requests": {
                   "cpu": 1,
