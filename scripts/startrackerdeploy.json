@@ -27,6 +27,11 @@
                   "memoryInGb": 0.5
                 }
               },
+              "ports": [
+                {
+                  "port": 5432
+                }
+              ],
               "volumeMounts": [
               {
                 "name": "data-db",

@@ -1,6 +1,7 @@
 const express = require('express');
 // const request = require('request');
 const {Pool, Client} = require('pg');
+const pgtools = require('pgtools');
 const fs = require('fs');
 const path = require('path');
 
@@ -17,34 +18,48 @@ const pool = new Pool({
   connectionString: `${connectionString}/startracker`
 });
 
-(async () =>{
-  try{
-    const conn = await pool.connect();
-    conn.release();
-  }
-  catch (err) {
-    const client = new Client({
-      user: 'postgres',
-      password: 'postgres',
-      database: 'postgres'
-    })
-    
-    await client.connect()
-    
-    try{
-      await client.query(sql)
-    }
-    catch(err){
+pgtools.createdb({
+    username: 'postgres',
+    password: 'postgres',
+    port: 5432,
+    host: 'localhost'
+  }, 
+  'startracker', 
+  (err, res) => {
+    if (err) {
       console.error(err);
       process.exit(-1);
     }
-    finally{
-      client.done();
-    }
-  }
-})().catch(e=> 
-  console.error(e.message,e.stack)
-);
+});
+
+// (async () =>{
+//   try{
+//     const conn = await pool.connect();
+//     conn.release();
+//   }
+//   catch (err) {
+//     const client = new Client({
+//       user: 'postgres',
+//       password: 'postgres',
+//       database: 'postgres'
+//     })
+    
+//     await client.connect()
+    
+//     try{
+//       await client.query(sql)
+//     }
+//     catch(err){
+//       console.error(err);
+//       process.exit(-1);
+//     }
+//     finally{
+//       client.done();
+//     }
+//   }
+// })().catch(e=> 
+//   console.error(e.message,e.stack)
+// );
 
   const app = express();
   

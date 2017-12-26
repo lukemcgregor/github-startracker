@@ -1,4 +1,4 @@
-az group deployment create --resource-group blog --template-file clouddrive/startrackerdeploy.json --parameters clouddrive/startrackerdeploy.params.json
+az group deployment create --resource-group blog --template-file startrackerdeploy.json --parameters startrackerdeploy.params.json
 az container logs --name startracker --container-name mongo -g blog
 az container logs --name startracker --container-name api -g blog
 az container logs --name startracker --container-name watcher -g blog
